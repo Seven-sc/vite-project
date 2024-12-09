@@ -6,7 +6,11 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  const name = "张飞";
+  //const name = "张飞";
+  const [name, setName] = useState("刘备");
+  // const handleUpdate = () => {
+  //   setName("张飞");
+  // }
   const titleStyle = {color: "red", fontSize: 30};
   const title1 = <span style={titleStyle}>hello world</span>
   const list = ['赵云','关羽','刘备'];
@@ -37,6 +41,7 @@ function App() {
       {list.map(item => {
         return <span key={item}>{item} </span>;
       })}
+      <input value={name} onChange={() => {setName("赵云")}}/>
     </>
   )
 }
