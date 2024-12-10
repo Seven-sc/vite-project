@@ -7,13 +7,17 @@ function App() {
   const [count, setCount] = useState(0)
 
   //const name = "张飞";
-  const [name, setName] = useState("刘备");
+  const [user, setName] = useState({name:"刘备",age:55});
   // const handleUpdate = () => {
   //   setName("张飞");
   // }
   const titleStyle = {color: "red", fontSize: 30};
   const title1 = <span style={titleStyle}>hello world</span>
-  const list = ['赵云','关羽','刘备'];
+  //const list = ['赵云','关羽','刘备'];
+  const [list, setList] = useState(['赵云','关羽','刘备']);
+  const updateList = () => {
+    setList([...list, "诸葛亮"])
+  }
   return (
     <>
       <div>
@@ -36,12 +40,15 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-        {name}
+        {user.name}
       </p>
       {list.map(item => {
-        return <span key={item}>{item} </span>;
+        return <span key={item} style={{marginRight:10}}>{item}</span>;
       })}
-      <input value={name} onChange={() => {setName("赵云")}}/>
+      <input value={user.name} onChange={() => {setName({...user, name:"赵云"})}}/>
+      <div>
+        <button onClick={updateList}>修改数组</button>
+      </div>
     </>
   )
 }
