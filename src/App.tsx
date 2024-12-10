@@ -45,7 +45,7 @@ function App() {
       {list.map(item => {
         return <span key={item} style={{marginRight:10}}>{item}</span>;
       })}
-      <input value={user.name} onChange={() => {setName({...user, name:"赵云123"})}}/>
+      <input value={user.name} onChange={() => {setName({...user, name:"赵云123456"})}}/>
       <div>
         <button onClick={updateList}>修改数组</button>
       </div>
