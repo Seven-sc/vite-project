@@ -18,6 +18,13 @@ function App() {
   const updateList = () => {
     setList([...list, "诸葛亮"])
   }
+
+  const updateCount = () => {
+    setCount(count => count + 1)
+    setCount(count => count + 1)
+    setCount(count => count + 1)
+  }
+  console.log("render")
   return (
     <>
       <div>
@@ -31,7 +38,7 @@ function App() {
       <h1>Vite + React</h1>
       {title1}
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={updateCount}>
           count is {count}
         </button>
         <p>
