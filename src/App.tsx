@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [total, setTotal] = useState(0)
 
   //const name = "张飞";
   const [user, setName] = useState({name:"刘备",age:55});
@@ -25,6 +26,16 @@ function App() {
     setCount(count => count + 1)
   }
   console.log("render")
+
+  useEffect(() => {
+    document.title = "我改了标题";
+    setCount(count + 1)
+  },[])
+
+  useEffect(() => {
+    setTotal(6 * count)
+  }, [count])
+
   return (
     <>
       <div>
@@ -55,6 +66,7 @@ function App() {
       <input value={user.name} onChange={() => {setName({...user, name:"赵云123456"})}}/>
       <div>
         <button onClick={updateList}>修改数组</button>
+        <p>{total}</p>
       </div>
     </>
   )
