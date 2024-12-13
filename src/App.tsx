@@ -36,6 +36,27 @@ function App() {
     setTotal(6 * count)
   }, [count])
 
+  // 实时获取浏览器宽高
+  const [size, reSize] = useState({
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight
+  })
+
+  const handleResize = () => {
+    reSize({
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    }
+  }, [])
+
   return (
     <>
       <div>
@@ -67,6 +88,7 @@ function App() {
       <div>
         <button onClick={updateList}>修改数组</button>
         <p>{total}</p>
+        <p>window width: {size.width}, window height: {size.height}</p>
       </div>
     </>
   )
