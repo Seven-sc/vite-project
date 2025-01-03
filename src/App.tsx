@@ -7,6 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
   const [total, setTotal] = useState(0)
 
+  // 启动命令: yarn dev
   //const name = "张飞";
   const [user, setName] = useState({name:"刘备",age:55});
   // const handleUpdate = () => {
@@ -21,8 +22,6 @@ function App() {
   }
 
   const updateCount = () => {
-    setCount(count => count + 1)
-    setCount(count => count + 1)
     setCount(count => count + 1)
   }
   console.log("render")
@@ -82,7 +81,7 @@ function App() {
         {user.name}
       </p>
       {list.map(item => {
-        return <span key={item} style={{marginRight:10}}>{item}</span>;
+        return <span key={item} style={{marginRight:10,color:"red"}}>{item}</span>;
       })}
       <input value={user.name} onChange={() => {setName({...user, name:"赵云123456"})}}/>
       <div>
