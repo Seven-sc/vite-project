@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -56,6 +56,18 @@ function App() {
     }
   }, [])
 
+  // const total1 = () => {
+  //   console.log('total1')
+  //   const list = [1, 3, 5, 7, 9]
+  //   return list.reduce((prev, current) => prev + current, 0)
+  // }
+
+  const total2 = useMemo(() => {
+    console.log('total2')
+    const list = [1, 3, 5, 7, 9]
+    return list.reduce((prev, current) => prev + current, 0)
+  }, [])
+
   return (
     <>
       <div>
@@ -89,6 +101,8 @@ function App() {
         <p>{total}</p>
         <p>window width: {size.width}, window height: {size.height}</p>
       </div>
+      <p>useMemo的使用</p>
+      <p>{total2}</p>
     </>
   )
 }
