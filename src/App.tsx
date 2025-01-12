@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -68,6 +68,15 @@ function App() {
     return list.reduce((prev, current) => prev + current, 0)
   }, [])
 
+  const Child = memo(({onClick}: any) => {
+    console.log("创建子节点")
+    return <p>我是子节点<button onClick={onClick}>我是子节点按钮</button></p>
+  })
+
+  const handleChild = useCallback(() => {
+    console.log('handleChild')
+  }, [])
+
   return (
     <>
       <div>
@@ -103,6 +112,7 @@ function App() {
       </div>
       <p>useMemo的使用</p>
       <p>{total2}</p>
+      <Child onClick={handleChild}/>
     </>
   )
 }
