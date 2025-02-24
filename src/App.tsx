@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -77,6 +77,15 @@ function App() {
     console.log('handleChild')
   }, [])
 
+  const userRef = useRef<HTMLInputElement>(null)
+  const handleRef = () => {
+    console.log(userRef.current?.value)
+    console.log(userRef.current?.id)
+    setUsernameVal(userRef.current?.value || '')
+  }
+  const [usernameVal, setUsernameVal] = useState('')
+
+
   return (
     <>
       <div>
@@ -113,6 +122,11 @@ function App() {
       <p>useMemo的使用</p>
       <p>{total2}</p>
       <Child onClick={handleChild}/>
+
+      <p>useRef的使用</p>
+      <input type='text' ref ={userRef} id='username'/>
+      <button onClick={handleRef}>打印</button>
+      <p>{usernameVal}</p>
     </>
   )
 }
