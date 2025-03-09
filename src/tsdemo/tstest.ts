@@ -1,10 +1,11 @@
 
 let name:string = "sd";
 
-const age:number = 30
+const age:number | string = 30
 const isMan:boolean = true
 
-const user:object = {}
+type userType = {id:number; name:string; age:number}
+const user: userType = {id:1, name:"jack", age:33}
 
 const big:bigint = 100n
 
@@ -20,4 +21,7 @@ function add1(x:number, y:number): number {
 const add2 = (a: number, b: number): number => {
     return a + b;
 }
+
+
+
 export default {}
