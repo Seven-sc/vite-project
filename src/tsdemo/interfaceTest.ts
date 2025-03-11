@@ -22,3 +22,12 @@ const add: sum = (a, b) => {
 const add11: sum1 = (a, b) => {
     return a + b;
 }
+
+function identity<T> (args:T):T {
+    return args;
+}
+
+identity<number>(1)
+
+
+export default {}
