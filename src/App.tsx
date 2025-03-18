@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -85,10 +86,17 @@ function App() {
   }
   const [usernameVal, setUsernameVal] = useState('')
 
+  const navigate =  useNavigate()
+  const goReact = () => {
+    navigate("/react")
+  }
+
 
   return (
     <>
       <div>
+        <NavLink to="/react">toReact</NavLink>
+        <button onClick={goReact}>点击跳转</button>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
