@@ -1,4 +1,4 @@
-import { createBrowserRouter,Link, Outlet, useParams } from "react-router-dom";
+import { createBrowserRouter,Link, Outlet, useLoaderData, useParams } from "react-router-dom";
 import App from "../App";
 function ReactDemo() {
     return <h2>哈哈哈哈 <Link to="..">back</Link></h2>
@@ -22,12 +22,20 @@ function ReactDemo() {
   }
 
   function Goods2() {
+    const loaderData = useLoaderData();
+    console.log("loaderData：", loaderData);
+
     return (
       <div>
       <h2>Goods2</h2>
       <Outlet></Outlet>
     </div>
     )
+  }
+
+  function goodsLoader() {
+    console.log('goodsLoader init');
+    return {goodsName: "Iphone16 Pro Max"}
   }
 const router = createBrowserRouter([
     {
@@ -57,6 +65,7 @@ const router = createBrowserRouter([
     {
       path: '/goods2',
       element: <Goods2/>,
+      loader: goodsLoader,
       children:[
         {
           path:'list',
